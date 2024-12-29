@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal SSH</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Terminal SSH</h1>
+    <button id="disconnect" onclick="window.location.href='/disconnect'">Déconnexion</button>
+    
+    <!-- Section pour entrer la commande -->
+    <div id="terminal-container">
+        <div>
+            <input type="text" id="command" placeholder="Entrez une commande">
+            <button onclick="executeCommand()">Exécuter</button>
+        </div>
+        
+        <!-- Section pour afficher les résultats -->
+        <div id="output" style="overflow-y: auto; max-height: 400px; margin-top: 20px;"></div>
+    </div>
+
+    <!-- Ajout du script JavaScript -->
+    <script>
+        async function executeCommand() {
+            const commandInput = document.getElementById('command');
+            const command = commandInput.value;
+            commandInput.value = "";
+
+            try {
+                const response = await fetch('/execute', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: command })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erreur lors de l\'exécution de la commande.');
+                }
+
+                const result = await response.json();
+
+                const outputElement = document.getElementById('output');
+                const newOutput = document.createElement('div');
+                newOutput.classList.add('command-result');
+                newOutput.innerHTML = `
+                    <div><strong>Commande :</strong> ${command}</div>
+                    <pre><strong>Résultat :</strong> ${result.stdout || "Aucune sortie"}</pre>
+                    <pre><strong>Erreur :</strong> ${result.stderr || "Aucune erreur"}</pre>
+                `;
+                outputElement.appendChild(newOutput);
+                outputElement.scrollTop = outputElement.scrollHeight;
+            } catch (error) {
+                alert("Erreur : " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

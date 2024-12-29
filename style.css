@@ -1,0 +1,125 @@
+/* Style général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Titres */
+h1 {
+    font-size: 2.5rem;
+    color: #f0f8ff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Boutons */
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff3b2f;
+}
+
+/* Formulaire */
+form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #f0f8ff;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Terminal */
+#terminal-container {
+    background: rgba(0, 0, 0, 0.8);
+    color: #39ff14;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+#terminal-container pre {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Champs de saisie */
+#command {
+    width: calc(100% - 120px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#command:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Zone des résultats */
+#output {
+    background: #1b1b1b;
+    color: #39ff14;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Déconnexion */
+button#disconnect {
+    background-color: #ff3b2f;
+    margin-bottom: 20px;
+}
+
+button#disconnect:hover {
+    background-color: #d32f2f;
+}
